@@ -1,0 +1,89 @@
+<div class="image">
+<div class="alert alert-danger" *ngIf='error'>{{error}}</div>
+<div class="alert alert-success" *ngIf='message'>{{message}}</div>
+
+  <form #registerForm='ngForm' (ngSubmit)="registerUser(registerForm)">
+    <div class="col-md-4 offset-md-4 mt-5 mb-3">
+    <div class="card" >
+      <div class="card-header bg-dark" style="color: white; margin-top: 5; margin-bottom: 3;">
+        <h2>Registeration form</h2>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label class="font-weight-bold" for="firstName">First Name</label>
+          <input type="text" name="firstName" id="firstName"  #firstName='ngModel' ngModel
+            class="form-control" pattern="[a-zA-Z]*" required>
+          <div *ngIf="firstName.invalid && firstName.touched">
+            <small *ngIf="firstName.errors.required" class="alert alert-danger">First name is required</small>
+            <small *ngIf="firstName.errors.minlength" class="alert alert-danger">First name must be atleast 3
+              characters</small>
+            <small *ngIf="firstName.errors.pattern" class="alert alert-danger">First name must consists of sequence of
+              characters</small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="font-weight-bold" for="lastName">Last Name</label>
+          <input name="lastName" id="lastName" type="text" required #lastName='ngModel' ngModel
+            class="form-control" pattern="[a-zA-Z]+(['-][a-zA-Z]+)*" required>
+          <div *ngIf="lastName.invalid && lastName.touched">
+            <small *ngIf="lastName.errors.required" class="alert alert-danger">Last name is required</small>
+            <small *ngIf="lastName.errors.minlength" class="alert alert-danger">Last name must be atleast 3
+              characters</small>
+            <small *ngIf="lastName.errors.pattern" class="alert alert-danger">Last name must consists of sequence of
+              characters</small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="font-weight-bold" for="role"> Select Role</label>
+          <select name="role" id="role" #role='ngModel' ngModel class="form-control" placeholder="Select Role" required>
+            <option value="admin">Admin</option>
+            <option value="student">Student</option>
+          </select>
+          <div *ngIf="role.invalid && role.touched">
+          <small *ngIf="role.errors.required" class="alert alert-danger">Role is required</small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="font-weight-bold" for="phoneNo">Phone number</label>
+          <input name="phoneNo" type="tel" id="phoneNo" #phoneNo='ngModel' ngModel
+            class="form-control" pattern="(\+)*(0|91)?[7-9]{1}\d{9}" required>
+          <div *ngIf="phoneNo.invalid && phoneNo.touched">
+            <small *ngIf="phoneNo.errors.required" class="alert alert-danger">Phone number is required</small>
+            <small *ngIf="phoneNo.errors.minlength" class="alert alert-danger">Phone number must contains 10
+              digits</small>
+            <small *ngIf="phoneNo.errors.pattern" class="alert alert-danger">Invalid phone number</small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="font-weight-bold" for="email">Email</label>
+          <input name="email" type="email" id="email" class="form-control" #email='ngModel' ngModel
+            pattern="[\w]+(\.[\w]+)*@[a-zA-Z]+(\.[a-zA-Z{2}])*(\.[a-zA-Z]{3})" required>
+          <div *ngIf="email.invalid && email.touched">
+            <small *ngIf="email.errors.required" class="alert alert-danger">Email is required</small>
+            <small *ngIf="email.errors.pattern" class="alert alert-danger">Invalid Email</small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="font-weight-bold" for="password">Password</label>
+          <input name="password" type="password" id="password" class="form-control" #password='ngModel' ngModel
+            pattern="((?=.*[a-z])(?=.*\d)(?=.*[A-Z])(?=.*[@_#$%!]).{6,})" required>
+          <div *ngIf="password.invalid && password.touched">
+            <small *ngIf="password.errors.required" class="alert alert-danger">Password is required</small>
+            <small *ngIf="password.errors.minlength" class="alert alert-danger">Password must contains 10 digits</small>
+            <small *ngIf="password.errors.pattern" class="alert alert-danger">Invalid password</small>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a routerLink='/login'>Already have an account?Please Login</a>
+        <button class="btn-btn-outline-dark float-right">Register</button>
+      </div>
+    </div>
+    </div>
+  </form>
+</div>

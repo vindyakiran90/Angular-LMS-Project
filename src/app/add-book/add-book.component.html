@@ -1,0 +1,74 @@
+<div class="alert alert-success" *ngIf='message'>{{message}}</div>
+<div class="alert alert-danger" *ngIf='error'> {{error}}</div>
+<div class="col-md-4 offset-4 mt-4">
+    <h4 class="text-center">Add Book</h4>
+    <form #addBookForm='ngForm' (ngSubmit)='postBook(addBookForm)'>
+        <div class="card-body">
+            <div class="form-group">
+                <label class="font-weight-bold" for="bookTitle">Book Title</label>
+                <input type="text" name="bookTitle" id="bookTitle" #bookTitle='ngModel' ngModel class="form-control"
+                    pattern="[a-zA-Z\s]*" required>
+                <div *ngIf="bookTitle.invalid && bookTitle.touched">
+                    <small *ngIf="bookTitle.errors.required" class="alert alert-danger">Book Title is required</small>
+                    <small *ngIf="bookTitle.errors.minlength" class="alert alert-danger">Book Title must be atleast 3
+                        characters</small>
+                    <small *ngIf="bookTitle.errors.pattern" class="alert alert-danger">Book Title must consists of
+                        sequence of
+                        characters</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="font-weight-bold" for="category">Category</label>
+                <input type="text" name="category" id="category" #category='ngModel' ngModel class="form-control"
+                    pattern="[a-zA-Z\s]*" required>
+                    <div *ngIf="category.invalid && category.touched">
+                        <small *ngIf="category.errors.required" class="alert alert-danger">Category is required</small>
+                        <small *ngIf="category.errors.minlength" class="alert alert-danger">Category must be atleast 3
+                            characters</small>
+                        <small *ngIf="category.errors.pattern" class="alert alert-danger">Category must consists of
+                            sequence of
+                            characters</small>
+                    </div>
+            </div>
+            <div class="form-group">
+                <label class="font-weight-bold" for="author">Author</label>
+                <input type="text" name="author" id="author" #author='ngModel' ngModel class="form-control"
+                    pattern="[a-zA-Z\s]*" required>
+                    <div *ngIf="author.invalid && author.touched">
+                        <small *ngIf="author.errors.required" class="alert alert-danger">Author is required</small>
+                        <small *ngIf="author.errors.minlength" class="alert alert-danger">Author must be atleast 3
+                            characters</small>
+                        <small *ngIf="author.errors.pattern" class="alert alert-danger">Author must consists of
+                            sequence of
+                            characters</small>
+                    </div>
+            </div>
+            <div class="form-group">
+                <label class="font-weight-bold" for="publisherName">Publisher Name</label>
+                <input type="text" name="publisherName" id="publisherName" #publisherName='ngModel' ngModel
+                    class="form-control" pattern="[a-zA-Z\s]*" required>
+                    <div *ngIf="publisherName.invalid && publisherName.touched">
+                        <small *ngIf="publisherName.errors.required" class="alert alert-danger">Publisher Name is required</small>
+                        <small *ngIf="publisherName.errors.minlength" class="alert alert-danger">Publisher Name must be atleast 3
+                            characters</small>
+                        <small *ngIf="publisherName.errors.pattern" class="alert alert-danger">Publisher Name must consists of
+                            sequence of
+                            characters</small>
+                    </div>
+            </div>
+            <div class="form-group">
+                <label class="font-weight-bold" for="numberOfBooks">Number Of Books</label>
+                <input type="number" name="numberOfBooks" id="numberOfBooks" #numberOfBooks='ngModel' ngModel
+                    class="form-control" pattern="[1-9]{1}[0-9]{1}" required>
+                    <div *ngIf="numberOfBooks.invalid && numberOfBooks.touched">
+                        <small *ngIf="numberOfBooks.errors.required" class="alert alert-danger">Number Of Books is required</small>
+                        <small *ngIf="numberOfBooks.errors.minlength" class="alert alert-danger">Number Of Books must be atleast 3
+                            characters</small>
+                        <small *ngIf="numberOfBooks.errors.pattern" class="alert alert-danger">Number Of Books must consists of
+                           digits</small>
+                    </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-outline-primary float-right">Add Book</button>
+    </form>
+</div>

@@ -1,0 +1,28 @@
+<div class="alert alert-danger" *ngIf='error'>{{error}}</div>
+<div class="alert alert-success" *ngIf='message'>{{message}}</div>
+<div style="text-align: center;">
+    <h2 style=" color:blue;">Books Requested Information</h2>
+</div>
+
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Request Id</th>
+        <th scope="col">Book Id</th>
+        <th scope="col">User Id</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Book Title</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let requestBook1 of requestBook'>
+        <td>{{requestBook1.requestId}}</td>
+        <td>{{requestBook1.bookId}}</td>
+        <td>{{requestBook1.userId}}</td>
+        <td>{{requestBook1.firstName}}</td>
+        <td>{{requestBook1.lastName}}</td>
+        <td>{{requestBook1.bookTitle}}</td>
+      </tr>
+    </tbody>
+  </table>

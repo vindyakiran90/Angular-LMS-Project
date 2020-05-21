@@ -1,0 +1,34 @@
+<div style="text-align: center;">
+    <h2 style=" color:blue;">Books Information</h2>
+</div>
+<div class="col-md-4 offset-md-4 mt-1 mb-3">
+    <input type="search" name="search" [(ngModel)]='search' placeholder="Search" class="form-control">
+</div>
+<div class="container mt-4">
+    <table class="table table-hover table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Book ID</th>
+                <th>Book Title</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th>Publisher Name</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let book of bookList | filter : search'>
+                <td>{{book.bookId}}</td>
+                <td>{{book.bookTitle | uppercase }}</td>
+                <td>{{book.author | uppercase }}</td>
+                <td>{{book.category | uppercase}}</td>
+                <td>{{book.publisherName | uppercase}}</td>
+                <td><button class="btn btn-primary" (click)='updateBook(book)'>Update</button></td>
+                <td><button class="btn btn-danger" (click)='deleteBook(book.bookId)'>Delete</button></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+</div>
